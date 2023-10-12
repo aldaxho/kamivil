@@ -14,10 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     //
-    public function showLoginForm()
-    {
-        return view('login');
-    }
+
 
     public function login(Request $request)
 {
@@ -32,11 +29,11 @@ class AuthController extends Controller
         if ($personal) {
             // Usuario es 'Personal'
             Auth::login($user);
-            return redirect()->intended('/dashboard-personal');
+            return view('welcome');
         } else {
             // Usuario es 'Cliente'
             Auth::login($user);
-            return redirect()->intended('/dashboard-cliente');
+            return view('welcome');
         }
     } else {
         // La autenticación falló

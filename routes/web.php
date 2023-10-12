@@ -24,7 +24,7 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Rutas libre, cliente
-
+Route::post('/login', [AuthController::class, 'login'])->name('welcome');
 
 
 Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
