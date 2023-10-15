@@ -30,11 +30,11 @@ class AuthController extends Controller
             // Usuario es 'Personal'
             Auth::login($user);
             return view('welcome');
-        } else {
+        }
             // Usuario es 'Cliente'
             Auth::login($user);
             return view('welcome');
-        }
+        
     } else {
         // La autenticación falló
         Session::flash('error', 'Credenciales incorrectas');

@@ -20,6 +20,15 @@ class Persona extends Model implements AuthenticatableContract
         'password',
         // Otros campos del personal
     ];
+    public function hasRole($rol)
+    {
+        if ($this->personal) {
+            // Verificar si 'personal' no es nulo
+            return $this->personal->cargo->rol === $rol;
+        }
+        return false;
+        
+    }
 
     public function personal()
     {
