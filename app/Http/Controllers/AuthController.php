@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 use App\Models\Persona;
+
 use App\Models\Personal;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
@@ -34,7 +35,7 @@ class AuthController extends Controller
             // Usuario es 'Cliente'
             Auth::login($user);
             return view('welcome');
-        
+
     } else {
         // La autenticación falló
         Session::flash('error', 'Credenciales incorrectas');

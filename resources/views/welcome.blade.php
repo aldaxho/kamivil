@@ -3,3 +3,4 @@
 @section('titulo','Home')
 
 @section('contenido')
+

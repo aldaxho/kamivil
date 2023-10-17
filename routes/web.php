@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PersonaController;
 
 
 /*
@@ -36,7 +37,15 @@ Route::post('/register', [RegistroController::class, 'register']);
 Route::group(['middleware' => ['auth', 'role:Administrador']], function () {
     // Rutas de "Personal" con el rol "administrador"
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+    Route::get('/admin/personal', [PersonaController::class,'index'])->name('personal.index');
+    Route::get('/admin/personal/create', [PersonaController::class,'create'])->name('personal.create');
+    Route::post('/admin/personal',[PersonaController::class,'store'])->name('personal.store');
+    Route::get('/admin/personal/{ci}/edit', [PersonaController::class,'edit'])->name('personal.edit');
+    Route::put('/admin/personal/{ci}', [PersonaController::class,'update'])->name('personal.update');
+    Route::delete('/admin/personal/{ci}', [PersonaController::class,'destroy'])->name('personal.destroy');
 });
 Route::group(['middleware' => ['auth', 'role:Atencion al cliente']], function () {
     // Rutas de "Personal" con el rol "Atencion al cliente"
+    
 });

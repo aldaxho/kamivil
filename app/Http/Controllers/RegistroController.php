@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Persona;
+use App\Models\Cliente;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -29,6 +30,9 @@ class RegistroController extends Controller{
         $persona->CorreoElectronico = $request->CorreoElectronico;
         $persona->password = Hash::make($request->password);
         $persona->save();
+        $cliente = new Cliente;
+        $cliente->ci_cliente = $request->ci;
+        $cliente->nit='11111';
 
         // Autenticar al usuario después del registro
         Auth::login($persona);

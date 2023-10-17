@@ -3,7 +3,14 @@
 /* vista principal*/
 body{
     background-color: rgb(185, 212, 212);
+    font-family: sans-serif;
+    background: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
+
 /* css para el login usando un showmodal*/
 .modal {
     display: none;
@@ -24,6 +31,7 @@ body{
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
 }
 
 #close-modal-button {
@@ -32,4 +40,109 @@ body{
     text-align: center;
     cursor: pointer;
 }
+
+/*home */
+/* Estilos de la barra de navegación */
+.top-nav {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position: fixed; /* Fijar la barra de navegación en la parte superior */
+    width: 100%; /* Ancho completo de la página */
+    top: 0; /* Colocarla en la parte superior */
+}
+
+.logo a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.main-menu {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.main-menu li {
+    margin-right: 20px; /* Espaciado entre elementos de menú */
+}
+
+.main-menu li:last-child {
+    margin-right: 0;
+}
+
+.main-menu a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.animation {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    z-index: 0;
+    transition: all .5s ease 0s;
+    border-radius: 8px;
+}
+
+.main-menu a:nth-child(1) {
+    width: 100px;
+}
+
+.main-menu a:nth-child(2) {
+    width: 100px;
+}
+
+.main-menu a:nth-child(3) {
+    width: 100px;
+}
+
+.main-menu a:nth-child(4) {
+    width: 100px;
+}
+
+.main-menu a:nth-child(5) {
+    width: 100px;
+}
+
+/* Colores de fondo cuando se hace hover en los elementos del menú */
+a:nth-child(1):hover ~ .animation {
+    width: 100px;
+    left: 0;
+    background-color: #1abc9c;
+}
+
+a:nth-child(2):hover ~ .animation {
+    width: 100px;
+    left: 100px;
+    background-color: #e74c3c;
+}
+
+a:nth-child(3):hover ~ .animation {
+    width: 100px;
+    left: 200px;
+    background-color: #3498db;
+}
+
+a:nth-child(4):hover ~ .animation {
+    width: 100px;
+    left: 300px;
+    background-color: #9b59b6;
+}
+
+a:nth-child(5):hover ~ .animation {
+    width: 100px;
+    left: 400px;
+    background-color: #e67e22;
+}
+
+/* Resto de tu CSS para el cuerpo de la página y modales */
 

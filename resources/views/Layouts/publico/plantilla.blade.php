@@ -5,41 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('/css/publico.css') }}">
+
     <title>@yield('titulo')</title>
 </head>
 <body>
-    <menu>
-        <li>home</li>
-        <li>catalogo</li>
-        <li>Nosotros</li>
-        <li>contactanos</li>
-        @if (Auth::check())
-        <!-- Mostrar botón de Cerrar sesión si el usuario ha iniciado sesión -->
-            @if (Auth::user()->hasRole('Administrador'))
-                <!-- Mostrar opciones para el rol "administrador" -->
-                <li><a href="#">Opción para administradores</a></li>
-                <li><a href="{{ route('admin') }}">Panel de Administrador</a></li>
+    <nav class="top-nav">
+        <div class="logo">
+            <a href="/">Logo</a>
+        </div>
+        <menu class="main-menu">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/catalogo">Catálogo</a></li>
+            <li><a href="/nosotros">Nosotros</a></li>
+            <li><a href="/contacto">Contáctanos</a></li>
+            @if (Auth::check())
+            <!-- Mostrar botón de Cerrar sesión si el usuario ha iniciado sesión -->
+                @if (Auth::user()->hasRole('Administrador'))
+                    <!-- Mostrar opciones para el rol "administrador" -->
+                    <li><a href="{{ route('admin') }}">Panel de Administrador</a></li>
 
 
+                @endif
+                @if (Auth::user()->hasRole('Atencion al cliente'))
+                    <!-- Mostrar opciones para el rol "otro_rol" -->
+                    <li><a href="#">Opción para otro rol</a></li>
+                    <li><a href="">Panel Personal</a></li>
+                @endif
+            <li>compras realizadas</li>
+            <li><a href="">Cambiar Contraseña</a></li>
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit">
+                    <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/exit.png" alt="exit"/></button>
+            </form>
+
+            @else
+            <!-- Mostrar botones de Iniciar sesión y Crear cuenta si el usuario no ha iniciado sesión -->
+            <h1><a id="login-link" href="#">
+                 <img width="64" height="64" src="https://img.icons8.com/glyph-neue/64/user-credentials.png"  alt="Iniciar sesión"></a></h1>
+            <h1><a id="register-link" href="#">
+                <img width="50" height="50" src="https://img.icons8.com/ios/50/add-user-male.png" alt="Registrarse"></a></h1>
             @endif
-            @if (Auth::user()->hasRole('Atencion al cliente'))
-                <!-- Mostrar opciones para el rol "otro_rol" -->
-                <li><a href="#">Opción para otro rol</a></li>
-                <li><a href="">Panel Personal</a></li>
-            @endif
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button type="submit">Cerrar sesión</button>
-        </form>
-        <li>compras realizadas</li>
-        <li><a href="">Cambiar Contraseña</a></li>
-        @else
-        <!-- Mostrar botones de Iniciar sesión y Crear cuenta si el usuario no ha iniciado sesión -->
-        <h1><a id="login-link" href="#">Iniciar sesión</a></h1>
-        <h1><a id="register-link" href="#">Crear Cuenta</a></h1>
-        @endif
+                <div class="animation start-home"></div>
+        </menu>
+    </nav>
 
-    </menu>
 
     @if (Session::has('success'))
     <div style="color: green">{{ Session::get('success') }}</div>
